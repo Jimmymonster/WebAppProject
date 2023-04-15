@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-using NuGet.Protocol.Plugins;
-using System.Diagnostics.Contracts;
 using TestProject.Models;
 
 namespace TestProject.Controllers
