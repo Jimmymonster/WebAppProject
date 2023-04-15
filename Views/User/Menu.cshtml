@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <title></title>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Karma", sans-serif
+        }
+
+        .w3-bar-block .w3-bar-item {
+            padding: 20px
+        }
+    </style>
+</head>
+<body>
+    <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()"
+           class="w3-bar-item w3-button">Close Menu</a>
+        <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a>
+        <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+    </nav>
+    <div class="w3-top">
+        <div class="w3-white w3-xlarge" style="max-width:1150px;margin-right:auto">
+            <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">&#9776;</div>
+            <div class="w3-right w3-padding-16 w3-black">User</div>
+            <div class="w3-right w3-padding-16">@Html.ActionLink("Worker", "Worker", "Home")</div>
+            <div class="w3-center w3-padding-16">พระเทพ fast</div>
+        </div>
+    </div>
+    <!--halal -->
+    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+        <div style="text-align:left;">
+            <h2>ร้าน halal food</h2>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://www.italian-feelings.com/wp-content/uploads/2016/08/halal-food.jpg" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>The Perfect Sandwich, A Real NYC Classic</h3>
+            <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.fPBrGcHunkf2MkgQHgYB7AHaES&pid=Api&P=0" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>Let Me Tell You About This Steak</h3>
+            <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://pbs.twimg.com/media/DHao0BsXcAAbn36.jpg:large" alt="Sandwich" style="width:100%; height: 170px;" />
+            <h3>Cherries, interrupted</h3>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+            <p>What else?</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://www.middleeasteye.net/sites/default/files/styles/article_page/public/london_halal_food_festival_dishes.jpg?itok=MgNEJc7j" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>Once Again, Robust Wine and Vegetable Pasta</h3>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+    </div>
+    <!--cfk -->
+    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+        <div style="text-align:left;">
+            <h2>ร้าน cfk</h2>
+        </div>
+        <div class="w3-quarter">
+
+            <img src="https://pngimg.com/uploads/kfc_food/kfc_food_PNG11.png" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>The Perfect Sandwich, A Real NYC Classic</h3>
+            <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://www.curryflow.com/wp-content/uploads/2019/09/45626733_198715864384480_6178359071381402980_n-1.jpg" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>Let Me Tell You About This Steak</h3>
+            <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://pngimg.com/uploads/kfc_food/kfc_food_PNG20.png" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>Cherries, interrupted</h3>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+            <p>What else?</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://pngimg.com/uploads/kfc/kfc_PNG47.png" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>Once Again, Robust Wine and Vegetable Pasta</h3>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+    </div>
+
+    <!-- ขนมผิงไส้เลื่อน -->
+    <div class="w3-row-padding w3-padding-16 w3-center">
+        <div style="text-align:left;">
+            <h2>ร้าน ขนมผิงไส้เลื่อน</h2>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://tse1.mm.bing.net/th?id=OIP.HAY0Ui2GXPwVoLGS5eBW_wHaHa&pid=Api&P=0" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>All I Need Is a Popsicle</h3>
+            <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://www.smeleader.com/wp-content/uploads/2015/04/%E0%B8%82%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B9%84%E0%B8%97%E0%B8%A2-%E0%B9%80%E0%B8%81%E0%B9%89%E0%B8%B2%E0%B8%9E%E0%B8%B5%E0%B9%88%E0%B8%99%E0%B9%89%E0%B8%AD%E0%B8%87-%E0%B8%9D%E0%B9%88%E0%B8%B2%E0%B8%A7%E0%B8%B4%E0%B8%81%E0%B8%A4%E0%B8%95%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B9%81%E0%B8%9A%E0%B8%A3%E0%B8%99%E0%B8%94%E0%B9%8C%E0%B9%80%E0%B8%88%E0%B8%B2%E0%B8%B0%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%AA%E0%B8%B2%E0%B8%A2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9A%E0%B8%B4%E0%B8%99-1.jpg" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>Salmon For Your Skin</h3>
+            <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://thewindmillrestaurant.com/wp-content/uploads/2020/05/IMG_7495-1.jpg" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>The Perfect Sandwich, A Real Classic</h3>
+            <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+        <div class="w3-quarter">
+            <img src="https://i.ytimg.com/vi/I7inte6W4ks/maxresdefault.jpg" alt="Sandwich" style="width: 100%; height: 170px;" />
+            <h3>Le French</h3>
+            <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        </div>
+    </div>
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+</body>
