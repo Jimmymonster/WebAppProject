@@ -36,7 +36,8 @@ namespace TestProject.Controllers
                     //String Status = reader.GetString(3);
                     //checking variables...
                     mySqlConnection.Close();
-                    return View("~/Views/AfterLoginPage/Menu.cshtml");
+                    //return View("~/Views/Home/Menu.cshtml");
+                    return Redirect("Home/Menu");
                 }
                 else
                 {
