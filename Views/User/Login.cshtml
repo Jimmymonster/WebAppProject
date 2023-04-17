@@ -2,21 +2,24 @@
 	ViewBag.Title = "Login";
 	//Layout = "~/Views/_Layout.cshtml";
 }
-
 <head>
 @*    <link rel="stylesheet" href="login.css">*@
+
 	<link href="~/css/login.css" rel="stylesheet" />
 </head>
 
 <body>
 
     <h2>LOGIN</h2>
-
-    <form asp-action="login" asp-controller="UserController" method="post">
+    <form asp-action="login" asp-controller="User" method="post">
         <div class="container">
             <input class="name" type="text" placeholder="Username" name="Username">
             <hr>
             <input class="pass" type="password" placeholder="Password" name="Password">
+@*            @if (ViewContext.HttpContext.Request.Method == "POST")
+            {
+                <div style="color:red">Login Failed</div>
+            }*@
              <button class="login" type="submit" >Login</button>
         </div>
     </form>

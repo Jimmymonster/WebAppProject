@@ -1,6 +1,7 @@
-﻿@{
-	ViewBag.Title = "Food list";
-	//Layout = "~/Views/_Layout.cshtml";
+﻿
+@{
+    ViewBag.Title = "Home Page";
+    //Layout = "~/Views/_Layout.cshtml";
 }
 <head>
     <meta charset="UTF-8">
@@ -23,5 +24,14 @@
         <div class="w3-white w3-xlarge" style="max-width:1150px;margin-right:auto">
             <div class="w3-right w3-padding-16">@Html.ActionLink("Menu", "Menu", "Home")</div>
         </div>
+        <h3>@ViewBag.selectedRes</h3>
+        @for (var i = 0; i < ViewBag.foods.Count; i++)
+        {
+            <div class="w3-quarter">
+                <img src="https://www.italian-feelings.com/wp-content/uploads/2016/08/halal-food.jpg" alt="Sandwich" style="width: 100%; height: 170px;" />
+                <h3>@ViewBag.foods[i].Name</h3>
+                <p>@ViewBag.foods[i].Price</p>
+            </div>
+        }
     </div>
 </body>
