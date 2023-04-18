@@ -32,15 +32,15 @@
                 <img src="https://www.italian-feelings.com/wp-content/uploads/2016/08/halal-food.jpg" alt="Sandwich" style="width: 100%; height: 170px;" />
                 <h3>@ViewBag.foods[i].Name</h3>
                 <p>@ViewBag.foods[i].Price</p>
-                <button onclick="increaseValueBy('@ViewBag.foods[i].Name',-1)"> - </button>
+                <button onclick="increaseValueBy('@ViewBag.foods[i].Name','@ViewBag.foods[i].Price',-1)"> - </button>
                 <div id="@ViewBag.foods[i].Name"> 0 </div>
-                <button onclick="increaseValueBy('@ViewBag.foods[i].Name',1)"> + </button>
+                <button onclick="increaseValueBy('@ViewBag.foods[i].Name','@ViewBag.foods[i].Price',1)"> + </button>
                 <script>
-                    function increaseValueBy(foodname, value) {
+                    function increaseValueBy(foodname, foodprice, value) {
                         $.ajax({
                             url: "/Home/IncreaseValueBy",
                             type: "POST",
-                            data: { foodname: foodname, value: value },
+                            data: { foodname: foodname, foodprice: foodprice, value: value },
                             success: function (newvalue) {
                                 document.getElementById(foodname).innerHTML = newvalue;
                             }
@@ -49,5 +49,10 @@
                 </script>
             </div>
         }
+        <form method="post">
+            <div>
+                <button type="submit">Add to Cart</button>
+            </div>
+        </form>
     </div>
 </body>

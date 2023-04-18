@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Shopping Cart";
+    //Layout = "~/Views/_Layout.cshtml";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <title></title>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Karma", sans-serif
+        }
+
+        .w3-bar-block .w3-bar-item {
+            padding: 20px
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+        <h3>Shopping Cart</h3>
+    @{int i = 1;}
+    @foreach (var order in @ViewBag.shoppingcartdata)
+        {
+        int orderkey = order.Key;
+        <div class="w3-quarter" style="border: solid black 3px">
+            <h3>order ที่ @i</h3>
+            @foreach(var foodlist in order.Value){
+                string foodname = foodlist.Key;
+                string foodprice = foodlist.Value.First;
+                int foodcount = foodlist.Value.Second;
+                <div>
+                    @foodname จำนวน <span id="@orderkey@foodname">@foodcount</span> รายการ ราคา @foodprice รวมทั้งหมด <span id="@orderkey@foodname sum">@(@foodcount * @Int32.Parse(foodprice))</span> บาท
+                    <button onclick="increaseValueBy('@orderkey','@foodname',@Int32.Parse(foodprice),-1)">-</button> <button onclick="increaseValueBy('@orderkey','@foodname',@Int32.Parse(foodprice),1)">+</button>
+                    <br />
+                    <script>
+                        function increaseValueBy(orderkey, foodname, foodprice, value) {
+                            $.ajax({
+                                url: "/Home/ShoppingCartIncreaseValueBy",
+                                type: "POST",
+                                data: { orderkey: orderkey, foodname: foodname, value: value },
+                                success: function (newvalue) {
+                                    document.getElementById(orderkey + foodname).innerHTML = newvalue;
+                                    document.getElementById(orderkey + foodname + " sum").innerHTML = newvalue * foodprice;
+                                }
+                            });
+                        }
+                    </script>
+                </div>
+			}
+            <button onclick="deleteOrder('@orderkey')">ลบ order ทิ้ง</button>
+            <script>
+                function deleteOrder(orderkey) {
+                    $.ajax({
+                        url: "/Home/deleteOrder",
+                        type: "POST",
+                        data: { orderkey: orderkey },
+                        success: function (newvalue) {
+                            window.location.href = "/Home/ShoppingCart"; //reset page
+                        }
+                    });
+                }
+            </script>
+            <div>ยอดทั้งหมด บวกเองละกันขก.</div>
+        </div>
+        i++;
+        }
+    @if (i > 1)
+    {
+        <form>
+			<input type="text" placeholder="สถานที่รับ" name="sadasd">
+            <button type="submit">สั่งทั้งหมด</button>
+        </form> 
+    }
+    else
+    {
+        <div>you have no order</div>
+    }
+</body>
