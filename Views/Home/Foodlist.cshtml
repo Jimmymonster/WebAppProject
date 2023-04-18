@@ -1,4 +1,88 @@
-﻿
+﻿<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="~/css/navbar.css" rel="stylesheet" />
+	<link href="~/css/foodlist.css" rel="stylesheet" />
+    <!-- For using font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@200;500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Google material -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <title>Restuarant A</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <ul>
+            <li style="float: left;">
+                <a href="@Url.Action("login", "User")">
+                    <span class="material-symbols-rounded logoutChange">
+                        logout
+                    </span> ออกจากระบบ
+                </a>
+            </li>
+
+            <li>
+                <a href="@Url.Action("Worker", "Home")">
+                    <span class="material-symbols-rounded">
+                        motorcycle
+                    </span> รับฝาก
+                </a>
+            </li>
+
+            <li><a href="@Url.Action("ShoppingCart", "Home")"><span class="material-symbols-rounded">shopping_cart</span> รถเข็น</a></li>
+            <li>
+                <a onClick="history.back()">
+                    <span class="material-symbols-rounded">
+                        arrow_back
+                    </span> ย้อนกลับ
+                </a>
+            </li>
+        </ul>
+
+
+        <div class="main">
+            <h1 class="header">กรุณาเลือกเมนูอาหาร</h1>
+
+            <div class="foodList">
+                @for (var i = 0; i < ViewBag.foods.Count; i++)
+                {
+                <div class="foodCard">
+                        <p class="foodName">@ViewBag.foods[i].Name</p>
+
+                    <div class="imgSpace">
+                     <img src="@ViewBag.foods[i].img_source" alt="">
+
+                            <div class="cost">฿@ViewBag.foods[i].Price</div>
+                    </div>
+
+                        <button class="add" onclick="addtocart('@ViewBag.foods[i].Name','@ViewBag.foods[i].Price','@ViewBag.foods[i].img_source')">+</button>
+                        <script>
+                            function addtocart(foodname, foodprice, img_source) {
+                                $.ajax({
+                                    url: "/Home/addtocart",
+                                    type: "POST",
+                                    data: { foodname: foodname, foodprice: foodprice, img_source: img_source},
+                                    
+                                });
+                            }
+                        </script>
+                </div>
+                }
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+
+@*
 @{
     ViewBag.Title = "Home Page";
     //Layout = "~/Views/_Layout.cshtml";
@@ -29,7 +113,7 @@
         @for (var i = 0; i < ViewBag.foods.Count; i++)
         {
             <div class="w3-quarter">
-                <img src="https://www.italian-feelings.com/wp-content/uploads/2016/08/halal-food.jpg" alt="Sandwich" style="width: 100%; height: 170px;" />
+                <img src="@ViewBag.foods[i].img_source" alt="Sandwich" style="width: 100%; height: 170px;" />
                 <h3>@ViewBag.foods[i].Name</h3>
                 <p>@ViewBag.foods[i].Price</p>
                 <button onclick="increaseValueBy('@ViewBag.foods[i].Name','@ViewBag.foods[i].Price',-1)"> - </button>
@@ -55,4 +139,4 @@
             </div>
         </form>
     </div>
-</body>
+</body>*@

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor.Infrastructure;
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
@@ -14,9 +15,15 @@ namespace TestProject.Controllers
             "database=rubsarbrurueng;" +
             "user=a_d_m_i_n;" +
             "password=adminadmin;";
-        private static ConcurrentDictionary<string, Pair<string, int>> fooddata = new ConcurrentDictionary<string, Pair<string, int>>();
-        private static ConcurrentDictionary<int, ConcurrentDictionary<string, Pair<string, int>>> shoppingcartdata = new ConcurrentDictionary<int, ConcurrentDictionary<string, Pair<string, int>>>(); // list of order
+        //private static ConcurrentDictionary<string, Pair<string, int>> fooddata = new ConcurrentDictionary<string, Pair<string, int>>();
+        //private static ConcurrentDictionary<int, ConcurrentDictionary<string, Pair<string, int>>> shoppingcartdata = new ConcurrentDictionary<int, ConcurrentDictionary<string, Pair<string, int>>>(); // list of order
+        //private static int idx = 0; //for indexing shoppingcartdata
+        private static ConcurrentDictionary<int, Food> shoppingcartdata = new ConcurrentDictionary<int, Food>(); //list of order
         private static int idx = 0; //for indexing shoppingcartdata
+        public static void clearShoppingCart()
+        {
+            shoppingcartdata.Clear();
+        }
         public IActionResult Worker()
         {
             string? user = HttpContext.Session.GetString("username");
@@ -81,7 +88,7 @@ namespace TestProject.Controllers
             ViewBag.selectedRes = name;
             MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
 
-            fooddata = new ConcurrentDictionary<string, Pair<string, int>>();
+            //fooddata = new ConcurrentDictionary<string, Pair<string, int>>();
             try
             {
                 mySqlConnection.Open();
@@ -94,6 +101,7 @@ namespace TestProject.Controllers
                     Food food = new Food();
                     food.Name = reader.GetString(2);
                     food.Price = reader.GetString(3);
+                    food.img_source = reader.GetString(4);
 
                     //foodcount[food.Name] = 0;  // for increse and decrese value of order
 
@@ -121,41 +129,52 @@ namespace TestProject.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Foodlist() //<--- submit to cart
+        public IActionResult addtocart(string foodname,string foodprice,string img_source)
         {
-            string? user = HttpContext.Session.GetString("username");
-            if (user == null || string.IsNullOrEmpty(user))
-            {
-                return RedirectToAction("login", "User", new { area = "" });
-            }
-            shoppingcartdata.TryAdd(idx, fooddata);
+            Food food = new Food();
+            food.Name = foodname;
+            food.Price= foodprice;
+            food.img_source=img_source;
+            shoppingcartdata.TryAdd(idx, food);
             idx++;
-            fooddata = new ConcurrentDictionary<string, Pair<string, int>>();
-            return RedirectToAction("ShoppingCart", "Home", new { area = "" });
+            return Json("Success");
         }
+        //[HttpPost]
+        //public IActionResult Foodlist() //<--- submit to cart
+        //{
+        //    string? user = HttpContext.Session.GetString("username");
+        //    if (user == null || string.IsNullOrEmpty(user))
+        //    {
+        //        return RedirectToAction("login", "User", new { area = "" });
+        //    }
+        //    shoppingcartdata.TryAdd(idx, fooddata);
+        //    idx++;
+        //    fooddata = new ConcurrentDictionary<string, Pair<string, int>>();
+        //    return RedirectToAction("ShoppingCart", "Home", new { area = "" });
+        //}
 
-        [HttpPost]
-        public IActionResult IncreaseValueBy(string foodname, string foodprice, int value)
-        {
-            if (!fooddata.ContainsKey(foodname))
-            {
-                fooddata.TryAdd(foodname, new Pair<string, int>(foodprice, 0)); //price, count
-            }
-            Pair<string, int> tmp;
-            fooddata.TryGetValue(foodname, out tmp);
-            tmp.Second += value;
-            if (tmp.Second < 0)
-            {
-                tmp.Second = 0;
-                fooddata.TryRemove(foodname, out _);
-                return Json(0);
-            }
-            else
-            {
-                fooddata.TryUpdate(foodname, tmp, fooddata[foodname]);
-                return Json(tmp.Second);
-            }
-        }
+        //[HttpPost]
+        //public IActionResult IncreaseValueBy(string foodname, string foodprice, int value)
+        //{
+        //    if (!fooddata.ContainsKey(foodname))
+        //    {
+        //        fooddata.TryAdd(foodname, new Pair<string, int>(foodprice, 0)); //price, count
+        //    }
+        //    Pair<string, int> tmp;
+        //    fooddata.TryGetValue(foodname, out tmp);
+        //    tmp.Second += value;
+        //    if (tmp.Second < 0)
+        //    {
+        //        tmp.Second = 0;
+        //        fooddata.TryRemove(foodname, out _);
+        //        return Json(0);
+        //    }
+        //    else
+        //    {
+        //        fooddata.TryUpdate(foodname, tmp, fooddata[foodname]);
+        //        return Json(tmp.Second);
+        //    }
+        //}
 
         public IActionResult ShoppingCart()
         {
@@ -168,23 +187,23 @@ namespace TestProject.Controllers
             ViewBag.shoppingcartdata = shoppingcartdata;
             return View();
         }
-        [HttpPost]
-        public IActionResult ShoppingCartIncreaseValueBy(int orderkey, string foodname, int value)
-        {
-            ConcurrentDictionary<string, Pair<string, int>> tmp;
-            Pair<string, int> tmpPair;
+        //[HttpPost]
+        //public IActionResult ShoppingCartIncreaseValueBy(int orderkey, string foodname, int value)
+        //{
+        //    ConcurrentDictionary<string, Pair<string, int>> tmp;
+        //    Pair<string, int> tmpPair;
 
-            shoppingcartdata.TryGetValue(orderkey, out tmp);   // get one list of order to tmp
-            tmp.TryGetValue(foodname, out tmpPair);            // get Pair<cost,count> from tmp to tmpPair
+        //    shoppingcartdata.TryGetValue(orderkey, out tmp);   // get one list of order to tmp
+        //    tmp.TryGetValue(foodname, out tmpPair);            // get Pair<cost,count> from tmp to tmpPair
 
-            tmpPair.Second += value;
-            if (tmpPair.Second < 0) { tmpPair.Second = 0; }
+        //    tmpPair.Second += value;
+        //    if (tmpPair.Second < 0) { tmpPair.Second = 0; }
 
-            tmp.TryUpdate(foodname, tmpPair, tmp[foodname]);  // put back to tmp
-            shoppingcartdata.TryUpdate(orderkey, tmp, shoppingcartdata[orderkey]); // put back to shoppingcartdata
+        //    tmp.TryUpdate(foodname, tmpPair, tmp[foodname]);  // put back to tmp
+        //    shoppingcartdata.TryUpdate(orderkey, tmp, shoppingcartdata[orderkey]); // put back to shoppingcartdata
 
-            return Json(tmpPair.Second);
-        }
+        //    return Json(tmpPair.Second);
+        //}
         [HttpPost]
         public IActionResult deleteOrder(int orderkey)
         {

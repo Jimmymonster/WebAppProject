@@ -72,7 +72,7 @@
     <!-- backend-->
     <ul>
         <li style="float: left;">
-            <a href="login.html">
+            <a href="@Url.Action("login", "User")">
                 <span class="material-symbols-rounded logoutChange">
                     logout
                 </span> ออกจากระบบ
@@ -80,12 +80,14 @@
         </li>
 
         <li>
-            <a href="@Url.Action("Menu", "Home")"><span class="material-symbols-rounded">
-                motorcycle
-				</span>  รับฝาก
-			</a>
+            <a href="@Url.Action("Worker", "Home")">
+                <span class="material-symbols-rounded">
+                    motorcycle
+                </span> รับฝาก
+            </a>
         </li>
-        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><span class="material-symbols-rounded">shopping_cart</span> รถเข็น</a></li>
+
+        <li><a href="@Url.Action("ShoppingCart", "Home")"><span class="material-symbols-rounded">shopping_cart</span> รถเข็น</a></li>
         <li>
             <a onClick="history.back()">
                 <span class="material-symbols-rounded">

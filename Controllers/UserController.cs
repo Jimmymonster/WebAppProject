@@ -15,6 +15,7 @@ namespace TestProject.Controllers
         {
             HttpContext.Session.Clear();
             TempData.Clear();
+            HomeController.clearShoppingCart();
             return View();
         }
         [HttpPost]
@@ -53,6 +54,7 @@ namespace TestProject.Controllers
         public IActionResult loginfailed()
         {
             HttpContext.Session.Clear();
+            HomeController.clearShoppingCart();
             TempData.Clear();
             return View();
         }

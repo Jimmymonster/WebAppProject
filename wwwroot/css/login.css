@@ -1,16 +1,28 @@
-﻿body {
-    font-family: Arial, Helvetica, sans-serif;
+﻿@media screen and (max-width: 300px) {
+    span .psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+body {
+    font-family: 'Anuphan', sans-serif;
     overflow: hidden;
-    flex: auto;
+}
+
+* {
+    font-family: 'Anuphan', sans-serif;
 }
 
 h2 {
-    position: absolute;
-    width: 272px;
-    height: 113px;
-    left: 407px;
-    top: 128px;
-    font-family: 'Abhaya Libre Medium';
+    position: relative;
+    left: 30vw;
+    top: 23vh;
+    margin: 0px;
     font-style: normal;
     font-weight: 500;
     font-size: 96px;
@@ -18,8 +30,8 @@ h2 {
     color: #000000;
 }
 
-form {
-    position: absolute;
+input::placeholder {
+    color: lightgray;
 }
 
 input:focus::placeholder {
@@ -27,58 +39,60 @@ input:focus::placeholder {
 }
 
 .name {
-    border: hidden;
+    border: none;
     outline: none;
-    border-color: black;
-    position: absolute;
-    width: 700px;
-    height: 40px;
-    left: 335px;
-    top: 285px;
-    font-size: 20px;
+    position: relative;
+    width: 40vw;
+    height: 50px;
+    left: 30vw;
+    top: 31vh;
+    font-size: 50px;
 }
 
-hr {
-    position: absolute;
-    width: 700px;
-    left: 335px;
-    top: 331px;
-    border-width: 2px;
-    border-color: black;
+.line {
+    position: relative;
+    width: 40vw;
+    height: 2px;
+    left: 30vw;
+    top: 34vh;
+    margin: 0px;
+    background-color: black;
 }
 
 .pass {
-    border: hidden;
+    border: none;
     outline: none;
-    border-color: black;
-    position: absolute;
-    width: 700px;
-    height: 40px;
-    left: 337px;
-    top: 358px;
-    font-size: 20px;
+    position: relative;
+    width: 40vw;
+    height: 50px;
+    left: 30vw;
+    top: 36vh;
+    font-size: 50px;
 }
 
 .login {
-    position: absolute;
-    width: 700px;
-    height: 40px;
-    left: 337px;
-    top: 495px;
+    position: relative;
+    width: 40vw;
+    height: 50px;
+    left: -10vw;
+    top: 50vh;
+    margin: auto;
     background-color: rgba(255, 191, 66, 0.54);
     border: none;
+    font-size: 30px;
 }
 
     .login:hover {
-        opacity: 0.8;
+        background-color: #ffb116c0;
+        cursor: pointer;
     }
 
 .bigCir {
     position: absolute;
-    width: 850px;
-    height: 850px;
-    left: -585px;
-    top: 35px;
+    width: 42vw;
+    height: 85vh;
+    left: -28vw;
+    top: 8vh;
     border-radius: 50%;
     background: rgba(255, 191, 66, 0.54);
 }
@@ -87,8 +101,8 @@ hr {
     position: absolute;
     width: 76px;
     height: 76px;
-    left: 130px;
-    top: 155px;
+    left: 7vw;
+    top: 20vh;
     border-radius: 50%;
     background: rgba(255, 191, 66, 0.54);
 }
@@ -97,11 +111,11 @@ hr {
     position: absolute;
     width: 0px;
     height: 0px;
-    left: 1320px;
-    top: 580px;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 200px solid rgba(255, 191, 66, 0.54);
+    left: 83vw;
+    top: 69vh;
+    border-left: 5vw solid transparent;
+    border-right: 5vw solid transparent;
+    border-bottom: 10vw solid rgba(255, 191, 66, 0.54);
     transform: rotate(-44.32deg);
 }
 
@@ -109,11 +123,11 @@ hr {
     position: absolute;
     width: 0px;
     height: 0px;
-    left: 1290px;
-    top: 530px;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 200px solid rgba(255, 191, 66, 0.54);
+    left: 87.5vw;
+    top: 78vh;
+    border-left: 5vw solid transparent;
+    border-right: 5vw solid transparent;
+    border-bottom: 10vw solid rgba(255, 191, 66, 0.54);
     transform: rotate(-44.32deg);
 }
 
@@ -121,20 +135,20 @@ hr {
     position: absolute;
     width: 0px;
     height: 0px;
-    left: 1250px;
-    top: 465px;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 200px solid rgba(255, 191, 66, 0.54);
+    left: 92vw;
+    top: 87vh;
+    border-left: 5vw solid transparent;
+    border-right: 5vw solid transparent;
+    border-bottom: 10vw solid rgba(255, 191, 66, 0.54);
     transform: rotate(-44.32deg);
 }
 
 .cirLine {
     position: absolute;
-    width: 750px;
-    height: 750px;
-    left: 1300px;
-    top: -500.86px;
+    width: 30vw;
+    height: 60vh;
+    left: 84vw;
+    top: -30vh;
     border-radius: 50%;
     background: rgba(255, 191, 66, 0.54);
     transform: rotate(-45deg);
@@ -143,9 +157,9 @@ hr {
 .transLine1 {
     position: absolute;
     width: 1319.96px;
-    height: 64.27px;
-    left: 1180px;
-    top: -140.44px;
+    height: 6.7vh;
+    left: 61vw;
+    top: -13vh;
     background: white;
     transform: rotate(-45deg);
 }
@@ -153,9 +167,9 @@ hr {
 .transLine2 {
     position: absolute;
     width: 1319.96px;
-    height: 64.27px;
-    left: 1365px;
-    top: -140.44px;
+    height: 6.7vh;
+    left: 70vw;
+    top: -13vh;
     background: white;
     transform: rotate(-45deg);
 }
@@ -163,62 +177,9 @@ hr {
 .transLine3 {
     position: absolute;
     width: 1319.96px;
-    height: 64.27px;
-    left: 1550px;
-    top: -140.44px;
+    height: 6.7vh;
+    left: 79.5vw;
+    top: -13vh;
     background: white;
     transform: rotate(-45deg);
-}
-/*form {
-    border: 3px solid #f1f1f1;
-}
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-
-
-    button:hover {
-        opacity: 0.8;
-    }*/
-
-
-
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
-
-.container {
-    padding: 16px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-media screen and (max-width: 300px) {
-    span .psw
-
-{
-    display: block;
-    float: none;
-}
-
-.cancelbtn {
-    width: 100%;
-}
 }

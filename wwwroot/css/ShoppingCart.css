@@ -1,0 +1,141 @@
+﻿body {
+}
+h1 {
+    text-align: center;
+    margin-bottom: 1vh;
+}
+
+.foodList {
+    width: 80vw;
+    height: 50vh;
+    margin-left: 10vw;
+    margin-top: 20px;
+    background-color: #f3f3f3;
+    overflow: auto;
+}
+
+    .foodList::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .foodList::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    .foodList::-webkit-scrollbar-thumb {
+        background: #ffdbae;
+        border-radius: 10px;
+    }
+
+        .foodList::-webkit-scrollbar-thumb:hover {
+            background: #ffbd6c;
+        }
+
+.foodCard {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    height: 85%;
+    border-radius: 10px;
+    left: 20px;
+}
+
+.foodName {
+    font-size: 8vh;
+    right: 13vw;
+}
+
+.cost {
+    font-size: 8vh;
+    right: 30px;
+    left: 10vw;
+}
+
+.removeOrder {
+    margin: 0px;
+    padding: 1.1vh 1.5vh;
+    right: 50px;
+    font-size: 2.5vh;
+    background-color: indianred;
+    border-radius: 5px;
+    border: none;
+}
+
+    .removeOrder:hover {
+        background-color: crimson;
+        cursor: pointer;
+    }
+
+    .removeOrder:active {
+        background-color: indianred;
+    }
+
+.line {
+    width: 70%;
+    height: 2px;
+    background-color: lightgray;
+    margin: 5px auto 5px auto;
+}
+
+.detailSubmitRow {
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    height: 30vh;
+    margin-left: 10vw;
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deHead {
+    font-size: 50px;
+}
+
+.formHeader {
+    font-size: 30px;
+    padding: 15px 0px 15px 0px;
+}
+
+.input {
+    font-size: 25px;
+    width: 200px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.submit {
+    width: 300px;
+    height: 100px;
+    margin: auto;
+    margin-top: 15vh;
+    margin-left: 40vw;
+    padding-right: 10px;
+    font-size: 50px;
+    background-color: lightgreen;
+    border: 2px solid darkslategray;
+    border-radius: 10px;
+    color: darkslategray;
+}
+
+    .submit:hover {
+        background-color: limegreen;
+        cursor: pointer;
+    }
+
+    .submit:active {
+        background-color: lightgreen;
+    }
+
+.send {
+    font-size: 50px !important;
+}

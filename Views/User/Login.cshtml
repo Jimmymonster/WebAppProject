@@ -1,27 +1,36 @@
-﻿@{
-	ViewBag.Title = "Login";
-	//Layout = "~/Views/_Layout.cshtml";
-}
-<head>
-@*    <link rel="stylesheet" href="login.css">*@
-
+﻿<!DOCTYPE html>
+<html>
+    <head>
 	<link href="~/css/login.css" rel="stylesheet" />
-</head>
+        <title>Login</title>
+
+        <!-- For using font family -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@200;500&display=swap" rel="stylesheet">
+	
+        <style>
+
+        /* Change styles for span and cancel button on extra small screens */
+        
+        </style>
+    </head>
 
 <body>
 
-    <h2>LOGIN</h2>
-    <form asp-action="login" asp-controller="User" method="post">
+    <h2>LOGIN (• ◡•)</h2>
+
+    <form method="post">
+
         <div class="container">
             <input class="name" type="text" placeholder="Username" name="Username">
-            <hr>
+
+            <div class="line"></div>
             <input class="pass" type="password" placeholder="Password" name="Password">
-@*            @if (ViewContext.HttpContext.Request.Method == "POST")
-            {
-                <div style="color:red">Login Failed</div>
-            }*@
-             <button class="login" type="submit" >Login</button>
+            
+            <button class="login" type="submit">Login</button>
         </div>
+
     </form>
 
     <div class="bigCir"></div>
@@ -37,3 +46,5 @@
     <div class="transLine3"></div>
 
 </body>
+</html>
+

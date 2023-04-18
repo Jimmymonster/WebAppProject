@@ -1,0 +1,64 @@
+﻿h1 {
+    text-align: center;
+    margin-top: 7vh;
+    margin-bottom: 2vh;
+}
+
+.foodList {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 2vw;
+    padding-right: 1vw;
+}
+
+.foodCard {
+    width: 15vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 3vh;
+}
+
+.foodName {
+    font-size: 30px;
+    text-align: center;
+    padding: 3px 0px;
+    background-color: bisque;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.imgSpace {
+    width: 100%;
+}
+
+.cost {
+    font-size: 30px;
+    position: absolute;
+    bottom: 4px;
+    right: 0px;
+    background-color: lightsalmon;
+    border-top-left-radius: 10px;
+}
+
+img {
+    width: 100%;
+}
+
+.add {
+    width: 100%;
+    font-size: 25px;
+    margin: 0px;
+    padding: 0px;
+    top: -4px;
+    background-color: lightgreen;
+    border: none;
+    border-radius: 0px 0px 10px 10px;
+}
+
+    .add:hover {
+        background-color: limegreen;
+        cursor: pointer;
+    }
+
+    .add:active {
+        background-color: lightgreen;
+    }
