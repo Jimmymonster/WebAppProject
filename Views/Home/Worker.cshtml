@@ -1,27 +1,101 @@
 ﻿@{
-	ViewBag.Title = "Food list";
-	//Layout = "~/Views/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
 }
+
+
+<!DOCTYPE html>
+
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
-    <title></title>
-    <style>
-        body, h1, h2, h3, h4, h5, h6 {
-            font-family: "Karma", sans-serif
-        }
+    <!-- For using font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@200;500&display=swap" rel="stylesheet">
+	<link href="~/css/worker.css" rel="stylesheet" />
+    <!-- Google material -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-        .w3-bar-block .w3-bar-item {
-            padding: 20px
-        }
-    </style>
+    <title></title>
 </head>
 <body>
-    <div class="w3-top">
-        <div class="w3-white w3-xlarge" style="max-width:1150px;margin-right:auto">
-            <div class="w3-right w3-padding-16">@Html.ActionLink("Menu", "Menu", "Home")</div>
+
+
+
+
+    <div class="header">
+
+        <!--Content before waves-->
+        <div class="inner-header flex">
+            <!--Just the logo.. Don't mind this-->
+
+            <h1>Welcome!</h1>
+            <p1 style="font-size: 100%;">Please wait for our users </p1>
+
+
+        </div>
+        <!--ทำให้มันpopupขึ้น-->
+        <div class="box">
+            <a class="button" href="#popup1">Notification</a>
+        </div>
+        <!--ทำให้มันpopupขึ้น-->
+        <!--Waves Container-->
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                 viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <!--Waves end-->
+
+    </div>
+    <!-- backend-->
+    <div id="popup1" class="overlay">
+        <div class="popup">
+
+            <a class="close" href="#">&times;</a>
+            <p style=" font-size: 300%; text-align: center; display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; ">Someone want to order</p>
+            <div style="text-align:center">
+                <button class="custom-btn btn-2" style="background: linear-gradient(0deg, rgb(0, 202, 0) 0%, rgb(155, 255, 28)100%); ">Yes</button>
+                <button class="custom-btn btn-2" style="background: linear-gradient(0deg, rgb(255, 28, 43) 0%,rgb(255, 64, 64)100%); ">No</button>
+            </div>
         </div>
     </div>
+    <!-- backend-->
+    <ul>
+        <li style="float: left;">
+            <a href="login.html">
+                <span class="material-symbols-rounded logoutChange">
+                    logout
+                </span> ออกจากระบบ
+            </a>
+        </li>
+
+        <li>
+            <a href="@Url.Action("Menu", "Home")"><span class="material-symbols-rounded">
+                motorcycle
+				</span>  รับฝาก
+			</a>
+        </li>
+        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"><span class="material-symbols-rounded">shopping_cart</span> รถเข็น</a></li>
+        <li>
+            <a onClick="history.back()">
+                <span class="material-symbols-rounded">
+                    arrow_back
+                </span> ย้อนกลับ
+            </a>
+        </li>
+    </ul>
+
+
+
+
 </body>

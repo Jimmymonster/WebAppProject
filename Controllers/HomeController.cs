@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using System.Xml.Linq;
 using TestProject.Models;
 
 namespace TestProject.Controllers
@@ -79,18 +80,24 @@ namespace TestProject.Controllers
                 MySqlCommand mySqlCommand = new MySqlCommand("select * from `prathep` where Name='"+name+"';", mySqlConnection);
                 MySqlDataReader reader = mySqlCommand.ExecuteReader();
                 List<Food> foods = new List<Food>();
+                //var foodcount = new Dictionary<string,int>();
                 while (reader.Read())
                 {
                     Food food = new Food();
                     food.Name = reader.GetString(2);
                     food.Price = reader.GetString(3);
+
+                    //foodcount[food.Name] = 0;  // for increse and decrese value of order
+                    TempData[food.Name] = 0;
                     foods.Add(food);
                 }
                 ViewBag.foods = foods;
+                //TempData["foodcount"] = foodcount;
                 if(foods.Count<=0)
                 {
                     return RedirectToAction("Menu", "Home", new { area = "" });
                 }
+                
             }
             catch (Exception ex)
             {
@@ -104,6 +111,15 @@ namespace TestProject.Controllers
             }
 
             return View();
+        }
+        [HttpPost]
+        public IActionResult IncreaseValueBy(string foodname, int value)
+        {
+            int tmp = Convert.ToInt32(TempData[foodname]);
+            tmp += value;
+            if(tmp<0) tmp = 0;
+            TempData[foodname] = tmp;
+            return Json(tmp);
         }
     }
 }
