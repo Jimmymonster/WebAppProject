@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@200;500&display=swap" rel="stylesheet">
+    <!-- Google material -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>Customer Info</title>
+	<link href="~/css/customerinfo.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="main">
+        <h1 class="header">สรุปรายการ</h1>
+
+        <!-- สี่เหลี่ยมใหญ่ๆ กลางจอ -->
+        <div class="foodList">
+            @{
+                string tmp = ViewBag.orderDesc;
+                string[] foodarray = tmp.Split('\n');
+            }
+            @foreach (string order in foodarray)
+            {
+                string[] s = order.Split(' ');
+                <div class="foodCard">
+                    <img src="https://cdn.britannica.com/98/235798-050-3C3BA15D/Hamburger-and-french-fries-paper-box.jpg" alt="">
+                    <p class="foodName">@s[0]</p>
+                    <p class="foodName">@s[1]</p>
+                    <p class="cost">฿@s[2]</p>
+                    @*<button class="removeOrder">X</button>*@
+                </div>
+            }
+
+
+        </div>
+
+        <!-- กรอกข้อมูลผู้ฝาก -->
+        <div class="detailSubmitRow">
+            <div class="detail">
+                <p class="deHead">ข้อมูลผู้สั่ง</p>
+
+                <div class="row-no-gutters">
+                    <div class="formHeader">ชื่อ :</div>
+                    <p class="input">@ViewBag.customer</p>
+                </div>
+
+                <div class="row-no-gutters">
+                    <div class="formHeader">เบอร์โทร :</div>
+                    <p class="input">@ViewBag.tel</p>
+                </div>
+
+                <div class="row-no-gutters">
+                    <div class="formHeader">จุดรับอาหาร :</div>
+                    <p class="input">@ViewBag.place</p>
+                </div>
+            </div>
+
+            <button class="row-no-gutters" onclick="finished()">
+                <span class="material-symbols-rounded send">
+                    จบงาน
+                </span>
+                <script>
+                    function finished() {
+                        $.ajax({
+                            url: "/Home/finishedOrder",
+                            type: "POST",
+                            data: {},
+                            success: function () {
+                                window.location.href = "/Home/Worker"; 
+                            }
+                        });
+                    }
+                </script>
+            </button>
+        </div>
+
+    </div>
+
+</body>

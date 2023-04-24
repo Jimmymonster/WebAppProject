@@ -57,19 +57,21 @@
                         <p class="foodName">@ViewBag.foods[i].Name</p>
 
                     <div class="imgSpace">
-                     <img src="@ViewBag.foods[i].img_source" alt="">
+                     <img src="@ViewBag.foods[i].img_source" alt="@ViewBag.foods[i].Name">
 
                             <div class="cost">฿@ViewBag.foods[i].Price</div>
                     </div>
 
-                        <button class="add" onclick="addtocart('@ViewBag.foods[i].Name','@ViewBag.foods[i].Price','@ViewBag.foods[i].img_source')">+</button>
+                        <button class="add" onclick="addtocart('@ViewBag.selectedRes','@ViewBag.foods[i].Name','@ViewBag.foods[i].Price','@ViewBag.foods[i].img_source')">+</button>
                         <script>
-                            function addtocart(foodname, foodprice, img_source) {
+                            function addtocart(resname, foodname, foodprice, img_source) {
                                 $.ajax({
                                     url: "/Home/addtocart",
                                     type: "POST",
-                                    data: { foodname: foodname, foodprice: foodprice, img_source: img_source},
-                                    
+                                    data: { resname:resname, foodname: foodname, foodprice: foodprice, img_source: img_source },
+                                    success: function (message) {
+                                        if(message=="Failed") alert("Shopping Cart is Full!!!");
+                                    }
                                 });
                             }
                         </script>
