@@ -24,9 +24,9 @@
             }
             @foreach (string order in foodarray)
             {
-                string[] s = order.Split(' ');
+                string[] s = order.Split('|');
                 <div class="foodCard">
-                    <img src="https://cdn.britannica.com/98/235798-050-3C3BA15D/Hamburger-and-french-fries-paper-box.jpg" alt="">
+                    <img src="@s[3]" alt="">
                     <p class="foodName">@s[0]</p>
                     <p class="foodName">@s[1]</p>
                     <p class="cost">฿@s[2]</p>
@@ -69,7 +69,7 @@
                             type: "POST",
                             data: {},
                             success: function () {
-                                window.location.href = "/Home/Worker"; 
+                                window.location.href = "/Home/CustomerInfo"; //then it will redirect to worker on controller --> 300IQ
                             }
                         });
                     }

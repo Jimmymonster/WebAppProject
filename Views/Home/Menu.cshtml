@@ -2,21 +2,76 @@
     ViewBag.Title = "Home Page";
 }
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="~/css/Menu.css" rel="stylesheet" />
+	<title>Restuarant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
-        <!-- For using font family -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@200;500&display=swap" rel="stylesheet">
+    <!-- For using font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@200;500&display=swap" rel="stylesheet">
 
-        <!-- Google material -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link href="~/css/Menu.css" rel="stylesheet" />
-        <title>Restuarant</title>
+    <!-- Google material -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
 
-    </head>
+            .overlay:target {
+                visibility: visible;
+                opacity: 1;
+            }
+        .popup {
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 30%;
+            height: 10%;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
 
+            .popup h2 {
+                margin-top: 0;
+                color: #333;
+                font-family: Tahoma, Arial, sans-serif;
+            }
+
+            .popup .close {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                transition: all 200ms;
+                font-size: 30px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #333;
+            }
+
+                .popup .close:hover {
+                    color: #06D85F;
+                }
+
+            .popup .content {
+                max-height: 30%;
+                overflow: auto;
+            }
+
+    </style>
+</head>
+<html>
     <body>
         <div class="container">
 
@@ -48,15 +103,35 @@
                             </div>
                         </a>
                         <script>
-            function selectedRes(Name){
-                window.location.href = "/Home/Foodlist/?name="+ Name;
-            }
-        </script>
+                            function selectedRes(Name){
+                                window.location.href = "/Home/Foodlist/?name="+ Name;
+                               }
+                         </script>
                 }
                 
                 </div>
             </div>
         </div>
+    <div id="popup1" class="overlay">
+        <div class="popup">
+
+            <a class="close" href="#">&times;</a>
+            <p style=" font-size: 300%; text-align: center; display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; ">Worker Cancel</p>
+            @*<div style="text-align:center">
+                <p>Worker Cancel</p>
+            </div>*@
+        </div>
+    </div>
+    <div id="popup2" class="overlay">
+        <div class="popup">
+
+            <a class="close" href="#">&times;</a>
+            <p style=" font-size: 300%; text-align: center; display: block; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; ">Enjoy your meal</p>
+            @*<div style="text-align:center">
+                <p>Enjoy your meal</p>
+            </div>*@
+        </div>
+    </div>
     </body>
 @*    @for (var i = 0; i < ViewBag.res.Count; i++)
         {
@@ -71,3 +146,4 @@
             }
         </script>
         *@
+</html>

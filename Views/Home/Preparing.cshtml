@@ -1,0 +1,36 @@
+﻿<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+	<link href="~/css/preparing.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Success!!</h1>
+    </header>
+    <!-- about section-->
+    <div class="team-card">
+
+        <img src="~/Content/pic/img_avatar2.png" alt="tony profile picture">
+        <p><strong>Tony Sulfaro</strong></p>
+        <p><i>ผู้รับ</i></p>
+        <p>I have been fishing on the bay for many years. Ice fishing is my specialty.</p>
+    </div>
+    <!--กลับไปหน้าแรกได้ -->
+    <button class="custom-btn btn-2" style="background: linear-gradient(0deg, rgb(0, 202, 0) 0%, rgb(155, 255, 28)100%); ">Back</button>
+    <!-- -กลับไปหน้าแรกได้-->
+
+    <script>
+        $(function () {
+            setInterval(function () {
+                $.getJSON('@Url.Action("waitFinish")', function (message) {
+                    if (message == "finish") {
+
+                        window.location.href = '/Home/Menu#popup2';
+                    }
+                });
+            }, 5000);
+        });
+    </script>
+</body>

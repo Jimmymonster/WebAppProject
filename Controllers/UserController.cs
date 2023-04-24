@@ -30,8 +30,9 @@ namespace TestProject.Controllers
                 MySqlDataReader reader = mySqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                    mySqlConnection.Close();
                     HttpContext.Session.SetString("username", user.Username ?? "Error Username is NULL");
+                    HttpContext.Session.SetInt32("id", reader.GetInt32(0));
+                    mySqlConnection.Close();
                     return RedirectToAction("Menu", "Home", new { area = "" });
                 }
                 else
@@ -69,8 +70,9 @@ namespace TestProject.Controllers
                 MySqlDataReader reader = mySqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
-                    mySqlConnection.Close();
                     HttpContext.Session.SetString("username", user.Username ?? "Error Username is NULL");
+                    HttpContext.Session.SetInt32("id", reader.GetInt32(0));
+                    mySqlConnection.Close();
                     return RedirectToAction("Menu", "Home", new { area = "" });
                 }
                 else

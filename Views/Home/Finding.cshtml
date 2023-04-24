@@ -162,6 +162,21 @@
                 pizza.update()
 
             }())
+         //============== check if order is accpeted =====================
+        $(function () {
+            setInterval(function () {
+                $.getJSON('@Url.Action("waitAccept")', function (message) {
+                    if (message == "accepted") {
+                        
+                        window.location.href = '/Home/Preparing';
+                    }
+                    else if(message == "decline") {
+                        window.location.href = '/Home/Menu#popup1';
+                    }
+                });
+            }, 5000);
+        });
+
     </script>
 </body>
-</html>
+

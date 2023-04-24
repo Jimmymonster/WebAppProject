@@ -5,7 +5,6 @@
 
 <!DOCTYPE html>
 
-<html>
 <head>
     <meta charset="UTF-8">
     <!-- For using font family -->
@@ -73,7 +72,7 @@
     </div>
     <script>
         var isPaused=false;
-        var id;
+        var id=-1;
         $(function () {
             setInterval(function () {
                 $.getJSON('@Url.Action("GetNotifications")', function (message) {
@@ -86,27 +85,39 @@
             }, 5000);
         });
         function accept() {
-            isPaused = false;
-            $.ajax({
-                url: "/Home/Accept",
-                type: "POST",
-                data: { id: id },
-                success: function (message) {
-                    window.location.href = '/Home/CustomerInfo'; // go to order detaill
-                }
-            });
+            if(id<0){
+                window.location.href = '/Home/Worker';
+            }
+            else{
+                isPaused = false;
+                $.ajax({
+                    url: "/Home/Accept",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (message) {
+                        clearInterval();
+                        window.location.href = '/Home/CustomerInfo'; // go to order detaill
+                    }
+                });
+            }
         }
 
         function closePopup(){
-            isPaused = false;
-            $.ajax({
-                url: "/Home/Decline",
-                type: "POST",
-                data: { id:id },
-                success: function (message) {
-                    window.location.href = '#';
-                }
-            });
+            if (id < 0) {
+                window.location.href = '/Home/Worker';
+            }
+            else{
+                isPaused = false;
+                $.ajax({
+                    url: "/Home/Decline",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (message) {
+                        id=-1;
+                        window.location.href = '#';
+                    }
+                });
+            }
         }   
     </script>
     <!-- backend-->
