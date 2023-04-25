@@ -12,7 +12,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Google material -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
-
+    <style>
+        .disabled {
+            pointer-events: none;
+            opacity: 1;
+        }
+    </style>
     <title>Restuarant A</title>
 </head>
 
@@ -27,7 +32,9 @@
                     </span> ออกจากระบบ
                 </a>
             </li>
-
+            <li style="float:left;" class="user disabled">
+                <span class="material-symbols-rounded">person</span> @ViewBag.user
+            </li>
             <li>
                 <a href="@Url.Action("Worker", "Home")">
                     <span class="material-symbols-rounded">

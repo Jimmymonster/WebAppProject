@@ -225,7 +225,10 @@ header {
             background-color: bisque;
             cursor: default;
         }*/
-
+        .disabled {
+            pointer-events: none;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -235,7 +238,7 @@ header {
             @*<li style="float: left;"><a href="login.html"><span class="material-symbols-rounded logoutChange">
                 logout
                 </span> ออกจากระบบ</a></li>*@
-            <li style="float:left;" class="user">
+            <li style="float:left;" class="user disabled">
                 <span class="material-symbols-rounded">person</span> @ViewBag.user 
             </li>
 

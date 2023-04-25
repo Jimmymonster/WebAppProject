@@ -18,6 +18,12 @@
 
     <link href="~/css/Menu.css" rel="stylesheet" />
 	<link href="~/css/overlay.css" rel="stylesheet" />
+    <style>
+        .disabled {
+            pointer-events: none;
+            opacity: 1;
+        }
+    </style>
 </head>
 <html>
     <body>
@@ -28,7 +34,7 @@
                 <a href="@Url.Action("login", "User")"><span class="material-symbols-rounded logoutChange">
                     logout
                     </span> ออกจากระบบ</a></li>
-            <li style="float:left;" class="user">
+            <li style="float:left;" class="user disabled">
                 <span class="material-symbols-rounded">person</span> @ViewBag.user
             </li>
             <li>
