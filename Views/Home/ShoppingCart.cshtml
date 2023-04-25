@@ -1,7 +1,7 @@
 ﻿<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="~/css/shoppingcart.css" rel="stylesheet" />
+	@*<link href="~/css/shoppingcart.css" rel="stylesheet" />*@
 	<link href="~/css/navbar.css" rel="stylesheet" />
     <!-- For using font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,200 @@
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Checkout</title>
+    <style>
+        h1 {
+            text-align: center;
+            margin-bottom: 1vh;
+        }
+
+        .foodList {
+            width: 80vw;
+            height: 50vh;
+            margin-left: 10vw;
+            margin-top: 20px;
+            background-color: rgb(255, 249, 243);
+            overflow: auto;
+        }
+
+            .foodList::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            .foodList::-webkit-scrollbar-track {
+                background-color: transparent;
+            }
+
+            .foodList::-webkit-scrollbar-thumb {
+                background: #ffdbae;
+                border-radius: 10px;
+            }
+
+                .foodList::-webkit-scrollbar-thumb:hover {
+                    background: #ffbd6c;
+                }
+
+        /*.foodCard
+        {
+            width: 100%;
+            height: 200px;
+
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        img
+        {
+            height: 85%;
+
+            border-radius: 10px;
+            left: 20px;
+        }
+
+        .foodName
+        {
+            font-size: 8vh;
+
+            right: 13vw;
+        }
+
+        .cost
+        {
+            font-size: 8vh;
+            right: 30px;
+
+            left: 10vw;
+        }
+
+        .removeOrder
+        {
+            margin: 0px;
+            padding: 1.1vh 1.5vh;
+
+            right: 50px;
+
+            font-size: 2.5vh;
+
+            background-color: indianred;
+            border-radius: 5px;
+            border: none;
+        }*/
+
+        .foodCard {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            height: 85%;
+            border-radius: 10px;
+            left: 20px;
+        }
+
+        .foodName {
+            font-size: 8vh;
+            left: 3vw;
+        }
+
+        .cost {
+            position: absolute;
+            font-size: 8vh;
+            right: 8vw;
+        }
+
+        .removeOrder {
+            position: absolute;
+            right: 2vw;
+            margin: 0px;
+            padding: 1.1vh 1.5vh;
+            font-size: 2.5vh;
+            background-color: indianred;
+            border-radius: 5px;
+            border: none;
+        }
+
+            .removeOrder:hover {
+                background-color: crimson;
+                cursor: pointer;
+            }
+
+            .removeOrder:active {
+                background-color: indianred;
+            }
+
+        .line {
+            width: 70%;
+            height: 2px;
+            background-color: lightgray;
+            margin: 5px auto 5px auto;
+        }
+
+        .detailSubmitRow {
+            display: flex;
+            justify-content: space-between;
+            width: 80vw;
+            height: 30vh;
+            margin-left: 10vw;
+            margin-top: 20px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .deHead {
+            font-size: 50px;
+        }
+
+        .formHeader {
+            font-size: 30px;
+            padding: 15px 0px 15px 0px;
+        }
+
+        .input {
+            font-size: 25px;
+            width: 200px;
+            height: 30px;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        .total {
+            font-size: 40px;
+            margin-top: 7vh;
+            left: 50px;
+            padding-bottom: 20px;
+        }
+
+        .submit {
+            width: 300px;
+            height: 100px;
+            margin: auto;
+            padding-right: 10px;
+            font-size: 50px;
+            background-color: lightgreen;
+            border: 2px solid darkslategray;
+            border-radius: 10px;
+            color: darkslategray;
+        }
+
+            .submit:hover {
+                background-color: limegreen;
+                cursor: pointer;
+            }
+
+            .submit:active {
+                background-color: lightgreen;
+            }
+
+        .send {
+            font-size: 50px !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -103,18 +297,24 @@
                 </div>
                 @if (@ViewBag.shoppingcartdata != null && @ViewBag.shoppingcartdata.Count > 0)
                 {
-                    <button class="submit">
-                        <span class="material-symbols-rounded send">
-                            send
-                        </span> สั่ง
-                    </button>
+                    <div class="submitRow">
+                        <p class="total">รวม: XXX.-</p>
+                        <button class="submit">
+                            <span class="material-symbols-rounded send">
+                                send
+                            </span> สั่ง
+                        </button>
+                    </div>
                 }
                 else{
-                    <button class="submit" disabled>
-                        <span class="material-symbols-rounded send">
-                            send
-                        </span> สั่ง
-                    </button>
+                    <div class="submitRow">
+                        <p class="total">รวม: XXX.-</p>
+                        <button class="submit" disabled>
+                            <span class="material-symbols-rounded send">
+                                send
+                            </span> สั่ง
+                        </button>
+                    </div>
                 }
             </form>
 

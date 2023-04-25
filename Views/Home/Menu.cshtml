@@ -28,7 +28,9 @@
                 <a href="@Url.Action("login", "User")"><span class="material-symbols-rounded logoutChange">
                     logout
                     </span> ออกจากระบบ</a></li>
-
+            <li style="float:left;" class="user">
+                <span class="material-symbols-rounded">person</span> @ViewBag.user
+            </li>
             <li>
                 <a href="@Url.Action("Worker", "Home")"><span class="material-symbols-rounded">
                     motorcycle

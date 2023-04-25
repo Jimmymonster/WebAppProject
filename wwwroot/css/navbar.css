@@ -20,11 +20,18 @@ li {
     float: right;
     padding: 5px 15px;
 }
-
+    user:hover {
+        background-color: bisque;
+        cursor: default;
+    }
     li:hover {
         background-color: rgb(255, 247, 237);
         cursor: pointer;
     }
+/*user:hover {
+    background-color: bisque;
+    cursor: default;
+}*/
 
     li:active {
         background-color: bisque;

@@ -1,6 +1,4 @@
-﻿body {
-}
-h1 {
+﻿h1 {
     text-align: center;
     margin-bottom: 1vh;
 }
@@ -10,7 +8,7 @@ h1 {
     height: 50vh;
     margin-left: 10vw;
     margin-top: 20px;
-    background-color: #f3f3f3;
+    background-color: rgb(255, 249, 243);
     overflow: auto;
 }
 
@@ -31,11 +29,58 @@ h1 {
             background: #ffbd6c;
         }
 
+/*.foodCard
+{
+    width: 100%;
+    height: 200px;
+
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img
+{
+    height: 85%;
+
+    border-radius: 10px;
+    left: 20px;
+}
+
+.foodName
+{
+    font-size: 8vh;
+
+    right: 13vw;
+}
+
+.cost
+{
+    font-size: 8vh;
+    right: 30px;
+
+    left: 10vw;
+}
+
+.removeOrder
+{
+    margin: 0px;
+    padding: 1.1vh 1.5vh;
+
+    right: 50px;
+
+    font-size: 2.5vh;
+    
+    background-color: indianred;
+    border-radius: 5px;
+    border: none;
+}*/
+
 .foodCard {
     width: 100%;
     height: 200px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -47,19 +92,20 @@ img {
 
 .foodName {
     font-size: 8vh;
-    right: 13vw;
+    left: 3vw;
 }
 
 .cost {
+    position: absolute;
     font-size: 8vh;
-    right: 30px;
-    left: 10vw;
+    right: 8vw;
 }
 
 .removeOrder {
+    position: absolute;
+    right: 2vw;
     margin: 0px;
     padding: 1.1vh 1.5vh;
-    right: 50px;
     font-size: 2.5vh;
     background-color: indianred;
     border-radius: 5px;
@@ -113,12 +159,17 @@ img {
     margin-left: 10px;
 }
 
+.total {
+    font-size: 40px;
+    margin-top: 7vh;
+    left: 50px;
+    padding-bottom: 20px;
+}
+
 .submit {
     width: 300px;
     height: 100px;
     margin: auto;
-    margin-top: 15vh;
-    margin-left: 40vw;
     padding-right: 10px;
     font-size: 50px;
     background-color: lightgreen;

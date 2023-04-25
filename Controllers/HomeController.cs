@@ -36,7 +36,7 @@ namespace TestProject.Controllers
             {
                 return RedirectToAction("login", "User", new { area = "" });
             }
-
+            ViewBag.user = user;
             return View();
         }
         public JsonResult GetNotifications()
@@ -113,6 +113,7 @@ namespace TestProject.Controllers
             {
                 return RedirectToAction("Worker", "Home", new { area = "" });
             }
+            ViewBag.user = user;
             MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
             try
             {
@@ -181,7 +182,7 @@ namespace TestProject.Controllers
                 return RedirectToAction("login", "User", new { area = "" });
             }
             ViewData.Clear();
-
+            ViewBag.user = user;
             MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
             try
             {
@@ -226,7 +227,7 @@ namespace TestProject.Controllers
                 return RedirectToAction("Menu", "Home", new { area = "" });
             }
             ViewBag.selectedRes = name;
-
+            ViewBag.user = user;
             MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
             //fooddata = new ConcurrentDictionary<string, Pair<string, int>>();
             try
@@ -329,7 +330,7 @@ namespace TestProject.Controllers
             {
                 return RedirectToAction("login", "User", new { area = "" });
             }
-
+            ViewBag.user = user;
             ViewBag.shoppingcartdata = shoppingcartdata;
             return View();
         }
@@ -416,7 +417,7 @@ namespace TestProject.Controllers
             {
                 return RedirectToAction("Menu", "Home", new { area = "" });
             }
-
+            ViewBag.user = user;
             return View();
         }
         public JsonResult waitAccept()
@@ -472,6 +473,7 @@ namespace TestProject.Controllers
             {
                 return RedirectToAction("Menu", "Home", new { area = "" });
             }
+            ViewBag.user = user;
             //MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
             //try
             //{

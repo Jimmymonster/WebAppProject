@@ -1,6 +1,9 @@
 ﻿body {
-    background-color: #00b4ff;
+    background-color: rgb(255, 242, 227);
     text-align: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 header {
@@ -9,20 +12,194 @@ header {
     color: white;
 }
 
-.team-card {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
-    border-radius: 10px;
-    width: 250px;
-    text-align: center;
-    margin: 2em 0 0 0;
-    padding: 2em;
+
+@keyframes loader {
+    0% {
+        width: 10%;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        left: 0%;
+        transform: rotate(0deg);
+    }
+
+    20% {
+        width: 0%;
+        left: 20%;
+    }
+
+    30% {
+        width: 25%;
+    }
+
+    50% {
+        left: 15%;
+        width: 35%;
+    }
+
+    70% {
+        width: 30%;
+        left: 18%;
+        transform: rotate(240deg);
+    }
+
+    90% {
+        width: 30%;
+        left: 10%;
+    }
+
+    100% {
+        width: 2%;
+        left: 25%;
+        transform: rotate(360deg);
+    }
 }
 
-    .team-card:hover {
-        transform: translateY(-5px);
+@keyframes pan {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: top right;
     }
 
-    .team-card img {
-        border-radius: 50%;
-        height: 200px;
+    10% {
+        transform: rotate(-2deg);
+        transform-origin: top right;
     }
+
+    50% {
+        transform: rotate(15deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes shadow {
+    0% {
+        width: 30%;
+    }
+
+    50% {
+        width: 40%;
+        left: 20px;
+    }
+
+    100% {
+        width: 30%;
+    }
+}
+
+.pan-loader {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader {
+    position: relative;
+    top: 10%;
+    left: 0;
+    z-index: -1;
+    width: 60%;
+    height: 45%;
+    border: 10px solid transparent;
+    border-bottom: 10px solid #FDD835;
+    border-radius: 50%;
+    animation: loader 2s infinite;
+    animation-timing-function: linear;
+}
+
+.pan-container {
+    display: flex;
+    width: 100%;
+    animation: pan 2s infinite;
+}
+
+.pan {
+    width: 60%;
+    height: 20px;
+    background: linear-gradient(#3949AB, #5C6BC0);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.handle {
+    width: 40%;
+    height: 10px;
+    background: linear-gradient(#3949AB, #5C6BC0);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.shadow {
+    position: relative;
+    top: 15%;
+    left: 15%;
+    width: 30%;
+    height: 8px;
+    background: lightgray;
+    border-radius: 20px;
+    animation: shadow 2s infinite;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+/*.text {
+            font-weight: 100;
+            font-size: 40px;
+            color: #FAFAFA;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgb(255, 148, 26);
+            bottom: 200px;
+        }
+
+        .dud {
+            color: rgb(255, 205, 149);
+        }*/
+
+.text {
+    font-size: 40px;
+    color: black;
+    font-family: 'Anuphan', sans-serif;
+    bottom: 200px;
+}
+
+.dud {
+    font-size: 40px;
+}
+
+.pekora {
+    width: 60vh;
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translate();
+    bottom: -20px;
+    border-color: black;
+    border-width: 3px;
+    border: 3px;
+    animation: move 20s linear infinite;
+}
+
+@keyframes move {
+    from {
+        left: -30%;
+    }
+
+    to {
+        left: 100%;
+    }
+}
