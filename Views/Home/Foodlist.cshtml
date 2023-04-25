@@ -13,10 +13,56 @@
     <!-- Google material -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
     <style>
+        img {
+            /*float: left;*/
+            /*width: 15vw;
+            height: 15vw;
+            background-size: cover;*/
+        }
+
+        .foodCard {
+            width: 13vw;
+            padding-left: 2vw;
+            padding-right: 2vw;
+            padding-bottom: 3vh;
+        }
+
+        .foodName {
+            font-size: 1.5vw;
+            text-align: center;
+            padding: 3px 0px;
+            background-color: bisque;
+            border-radius: 15px 15px 0px 0px;
+        }
+        .crop {
+            height: 13vw;
+            width: 13vw;
+            overflow: hidden;
+        }
+
+            .crop img {
+                object-fit: cover;
+                object-position: center;
+                height: 13vw;
+                width: 13vw;
+            }
         .disabled {
             pointer-events: none;
             opacity: 1;
         }
+
+        /*.orderAmount {
+            position: absolute;
+            font-size: 11px;
+            color: white;
+            text-align: center;
+            top: 5px;
+            left: 9px;
+            width: 15px;
+            height: 15px;
+            background-color: crimson;
+            border-radius: 50%;
+        }*/
     </style>
     <title>Restuarant A</title>
 </head>
@@ -43,9 +89,14 @@
                 </a>
             </li>
 
-            <li><a href="@Url.Action("ShoppingCart", "Home")"><span class="material-symbols-rounded">shopping_cart</span> รถเข็น</a></li>
             <li>
-                <a onClick="history.back()">
+                <a href="@Url.Action("ShoppingCart", "Home")">
+                    <span class="material-symbols-rounded">shopping_cart</span> รถเข็น
+                </a>
+                @*<p class="orderAmount"> @ViewBag.cartCount</p>*@
+            </li>
+            <li>
+                <a onClick="history.back();">
                     <span class="material-symbols-rounded">
                         arrow_back
                     </span> ย้อนกลับ
@@ -64,7 +115,9 @@
                         <p class="foodName">@ViewBag.foods[i].Name</p>
 
                     <div class="imgSpace">
+                        <div class="crop">
                      <img src="@ViewBag.foods[i].img_source" alt="@ViewBag.foods[i].Name">
+                        </div>
 
                             <div class="cost">฿@ViewBag.foods[i].Price</div>
                     </div>
@@ -78,6 +131,7 @@
                                     data: { resname:resname, foodname: foodname, foodprice: foodprice, img_source: img_source },
                                     success: function (message) {
                                         if(message=="Failed") alert("Shopping Cart is Full!!!");
+                                        //window.location.reload()
                                     }
                                 });
                             }

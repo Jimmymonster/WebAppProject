@@ -23,6 +23,19 @@
             pointer-events: none;
             opacity: 1;
         }
+
+        /*.orderAmount {
+            position: absolute;
+            font-size: 11px;
+            color: white;
+            text-align: center;
+            top: 5px;
+            left: 9px;
+            width: 15px;
+            height: 15px;
+            background-color: crimson;
+            border-radius: 50%;
+        } */ 
     </style>
 </head>
 <html>
@@ -44,7 +57,12 @@
 				</a>
 			</li>
             
-            <li><a href="@Url.Action("ShoppingCart", "Home")"><span class="material-symbols-rounded">shopping_cart</span> รถเข็น</a></li>
+            <li>
+                <a href="@Url.Action("ShoppingCart", "Home")">
+                    <span class="material-symbols-rounded">shopping_cart</span> รถเข็น
+                </a>
+                @*<p class="orderAmount"> @ViewBag.cartCount</p>*@
+            </li>
             </ul>
 
             

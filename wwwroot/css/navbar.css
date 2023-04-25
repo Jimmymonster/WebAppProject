@@ -2,8 +2,12 @@
     font-family: "Anuphan", sans-serif;
     position: relative;
     margin: 0px;
+    
+    
 }
-
+body{
+     background-color: rgb(255, 242, 227);
+ }
 ul {
     position: fixed;
     width: 100%;

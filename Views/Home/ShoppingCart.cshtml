@@ -102,8 +102,11 @@
 
         img {
             height: 85%;
+            width: 16%;
             border-radius: 10px;
             left: 20px;
+            object-fit: cover;
+            object-position: center;
         }
 
         .foodName {
@@ -249,13 +252,18 @@
 
         <div class="main">
             <h1 class="header">สรุปรายการ</h1>
-
+            
             <!-- สี่เหลี่ยมใหญ่ๆ กลางจอ -->
             <div class="foodList">
+                @{
+                    int sum = 0;
+                }
                 @if (@ViewBag.shoppingcartdata != null && @ViewBag.shoppingcartdata.Count>0)
                 {
                     @foreach (var order in @ViewBag.shoppingcartdata)
                     {
+                        sum+= Int32.Parse(order.Value.Price);
+
                         int orderkey = order.Key;
                         <div class="foodCard">
                             <img src="@order.Value.img_source" alt="">
@@ -305,7 +313,7 @@
                 @if (@ViewBag.shoppingcartdata != null && @ViewBag.shoppingcartdata.Count > 0)
                 {
                     <div class="submitRow">
-                        <p class="total">รวม: XXX.-</p>
+                        <p class="total">รวม: @sum.-</p>
                         <button class="submit">
                             <span class="material-symbols-rounded send">
                                 send
@@ -315,7 +323,7 @@
                 }
                 else{
                     <div class="submitRow">
-                        <p class="total">รวม: XXX.-</p>
+                        <p class="total">รวม: @sum.-</p>
                         <button class="submit" disabled>
                             <span class="material-symbols-rounded send">
                                 send

@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
 using System.Collections.Concurrent;
 using System.Data;
-using System.Data.SqlClient;
 using TestProject.Models;
 
 namespace TestProject.Controllers
@@ -37,6 +36,7 @@ namespace TestProject.Controllers
                 return RedirectToAction("login", "User", new { area = "" });
             }
             ViewBag.user = user;
+            ViewBag.cartCount = shoppingcartdata.Count;
             return View();
         }
         public JsonResult GetNotifications()
@@ -114,6 +114,7 @@ namespace TestProject.Controllers
                 return RedirectToAction("Worker", "Home", new { area = "" });
             }
             ViewBag.user = user;
+            ViewBag.cartCount = shoppingcartdata.Count;
             MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
             try
             {
@@ -183,6 +184,7 @@ namespace TestProject.Controllers
             }
             ViewData.Clear();
             ViewBag.user = user;
+            ViewBag.cartCount = shoppingcartdata.Count;
             MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
             try
             {
@@ -228,6 +230,7 @@ namespace TestProject.Controllers
             }
             ViewBag.selectedRes = name;
             ViewBag.user = user;
+            ViewBag.cartCount = shoppingcartdata.Count;
             MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
             //fooddata = new ConcurrentDictionary<string, Pair<string, int>>();
             try
@@ -332,6 +335,7 @@ namespace TestProject.Controllers
             }
             ViewBag.user = user;
             ViewBag.shoppingcartdata = shoppingcartdata;
+            ViewBag.cartCount = shoppingcartdata.Count;
             return View();
         }
         [HttpPost]
@@ -418,6 +422,7 @@ namespace TestProject.Controllers
                 return RedirectToAction("Menu", "Home", new { area = "" });
             }
             ViewBag.user = user;
+            ViewBag.cartCount = shoppingcartdata.Count;
             return View();
         }
         public JsonResult waitAccept()
@@ -474,6 +479,7 @@ namespace TestProject.Controllers
                 return RedirectToAction("Menu", "Home", new { area = "" });
             }
             ViewBag.user = user;
+            ViewBag.cartCount = shoppingcartdata.Count;
             //MySqlConnection mySqlConnection = new MySqlConnection(mysqlCon);
             //try
             //{

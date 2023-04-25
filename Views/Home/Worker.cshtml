@@ -17,6 +17,254 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        * {
+            font-family: 'Anuphan', sans-serif;
+            position: relative;
+            margin: 0px;
+        }
+
+        ul {
+            position: fixed;
+            width: 100%;
+            top: 0px;
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+            background-color: bisque;
+        }
+
+        li {
+            font-size: 30px;
+            float: right;
+            padding: 5px 15px;
+        }
+
+            li:hover {
+                background-color: rgb(255, 247, 237);
+                cursor: pointer;
+            }
+
+            li:active {
+                background-color: bisque;
+            }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .main {
+            margin-top: 60px;
+        }
+
+        .logoutChange {
+            color: crimson !important;
+        }
+
+        .box {
+            width: 40%;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.2);
+            padding: 35px;
+            border: 2px solid #fff;
+            border-radius: 20px/50px;
+            background-clip: padding-box;
+            text-align: center;
+        }
+
+        .button {
+            font-size: 1em;
+            padding: 10px;
+            color: #fff;
+            border: 2px solid #06D85F;
+            border-radius: 20px/50px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+        }
+
+            .button:hover {
+                background: #06D85F;
+            }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+            .overlay:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+        .popup {
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 30%;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+            .popup h2 {
+                margin-top: 0;
+                color: #333;
+                font-family: Tahoma, Arial, sans-serif;
+            }
+
+            .popup .close {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                transition: all 200ms;
+                font-size: 30px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #333;
+            }
+
+                .popup .close:hover {
+                    color: #06D85F;
+                }
+
+            .popup .content {
+                max-height: 30%;
+                overflow: auto;
+            }
+
+
+
+        body {
+        }
+
+        h1 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 48px;
+        }
+
+        p {
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 1px;
+            font-size: 14px;
+            color: #333333;
+        }
+
+        .header {
+            position: relative;
+            text-align: center;
+            background: linear-gradient(80deg, rgba(255, 191, 66, 0.54) 0%,rgb(255, 99, 71)100%);
+            color: white;
+        }
+
+
+
+        .inner-header {
+            height: 65vh;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .flex { /*Flexbox for containers*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .waves {
+            position: relative;
+            width: 100%;
+            height: 15vh;
+            margin-bottom: -7px; /*Fix for safari gap*/
+            min-height: 100px;
+            max-height: 150px;
+        }
+
+        .content {
+            position: relative;
+            height: 20vh;
+            text-align: center;
+            background-color: white;
+        }
+
+        /* Animation */
+
+        .parallax > use {
+            animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+        }
+
+            .parallax > use:nth-child(1) {
+                animation-delay: -2s;
+                animation-duration: 7s;
+            }
+
+            .parallax > use:nth-child(2) {
+                animation-delay: -3s;
+                animation-duration: 10s;
+            }
+
+            .parallax > use:nth-child(3) {
+                animation-delay: -4s;
+                animation-duration: 13s;
+            }
+
+            .parallax > use:nth-child(4) {
+                animation-delay: -5s;
+                animation-duration: 20s;
+            }
+
+        @@keyframes move-forever {
+            0% {
+                transform: translate3d(-90px,0,0);
+            }
+
+            100% {
+                transform: translate3d(85px,0,0);
+            }
+        }
+        /*Shrinking for mobile*/
+        @@media (max-width: 768px) {
+            .waves {
+                height: 40px;
+                min-height: 40px;
+            }
+
+            .content {
+                height: 30vh;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        .btn-2 {
+            text-align: center;
+            font-size: 300%;
+            border-radius: 20%;
+        }
+
+            .btn-2:before {
+                height: 0%;
+                width: 2px;
+            }
+
+            .btn-2:hover {
+                box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5), -4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255,255,255,.2), inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+            }
+
         .disabled {
             pointer-events: none;
             opacity: 1;
@@ -137,13 +385,13 @@
         <li style="float:left;" class="user disabled">
             <span class="material-symbols-rounded">person</span> @ViewBag.user
         </li>
-        <li>
+        @*<li>
             <a href="@Url.Action("Worker", "Home")">
                 <span class="material-symbols-rounded">
                     motorcycle
                 </span> รับฝาก
             </a>
-        </li>
+        </li>*@
 
         <li><a href="@Url.Action("ShoppingCart", "Home")"><span class="material-symbols-rounded">shopping_cart</span> รถเข็น</a></li>
         <li>
