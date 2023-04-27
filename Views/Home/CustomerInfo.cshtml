@@ -12,6 +12,7 @@
 
     <!-- Google material -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         h1 {
             text-align: center;
@@ -222,7 +223,7 @@
                     </div>
                 </div>
 
-                <div class="submitRow">
+                <div class="submitRow" onclick="finished()">
                     <p class="total">รวม: @sum.-</p>
                     <button class="submit" onclick="finished()">
                         <span class="material-symbols-rounded send">
